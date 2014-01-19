@@ -1,7 +1,5 @@
 import ConfigParser
 import os
-from os.path import expanduser
-from samba.dcerpc.security import sec_desc_buf
 
 
 DEFAULT_SETTINGS = {
