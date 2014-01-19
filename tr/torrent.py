@@ -23,11 +23,13 @@ class Torrent(object):
     # filename = torrent.fileName.text if torrent else None
     # magnetURI = torrent.magnetURI.text if torrent else None
 
-    def __init__(self, torrent_locations, title=None, guid=None):
+    def __init__(self, torrent_locations, title='', guid='', publication_date=None, description=''):
 
         self.torrent_locations = torrent_locations
         self.title = title
         self.guid = guid
+        self.description = description
+        self.publication_date = publication_date
         #
         # if self.path.startswith('magnet'):
         #     self.type = 'MAGNET'

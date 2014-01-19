@@ -18,7 +18,7 @@ class TransmissionClient(ClientBase):
         # print torrent, torrent.torrent_locations
 
         for torrent_link in torrent.torrent_locations:
-            proc = subprocess.Popen(["transmission-remote", "-a", torrent_link, '--auth', transmission_credentials],
+            proc = subprocess.Popen(["transmission-remote", settings.TRANSMISSION_HOST, "-a", torrent_link, '--auth', transmission_credentials],
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             stdout = proc.stdout.read()

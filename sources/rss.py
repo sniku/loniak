@@ -6,7 +6,7 @@ try:
     import feedparser
 except ImportError:
     from libs import feedparser
-
+from dateutil import parser
 
 class RssSource(SourceBase):
 
@@ -39,7 +39,9 @@ class RssSource(SourceBase):
             if 'magneturi' in entry:
                 torrent_links.append(entry['magneturi'])
 
-            t = Torrent(torrent_links, title=entry['title'], guid=entry['id'])
+            publication_date =  parser.parse(entry['published']).replace(tzinfo=None)
+
+            t = Torrent(torrent_links, title=entry['title'], guid=entry['id'], description=entry['description'], publication_date=publication_date)
             torrents.append(t)
         return torrents
 

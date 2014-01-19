@@ -10,6 +10,7 @@ DEFAULT_SETTINGS = {
     'VERBOSE': True,
     'TRANSMISSION_USERNAME': 'transmission',
     'TRANSMISSION_PASSWORD': 'transmission',
+    'TRANSMISSION_HOST': '127.0.0.1',
 }
 
 
