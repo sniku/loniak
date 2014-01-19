@@ -1,9 +1,12 @@
 import urllib2
-from BeautifulSoup import BeautifulSoup
 
 from sources.base import SourceBase
 from tr.torrent import Torrent
-import feedparser
+try:
+    import feedparser
+except ImportError:
+    from libs import feedparser
+
 
 class RssSource(SourceBase):
 

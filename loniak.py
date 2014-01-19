@@ -8,7 +8,11 @@ Usage:
   loniak finished_downloading <guid>
 
 """
-from docopt import docopt
+try:
+    from docopt import docopt
+except ImportError:
+    from libs.docopt import docopt
+
 from services import fetch_torrents
 from services.notify import notify
 
