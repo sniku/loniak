@@ -38,7 +38,7 @@ def fetch_torrents():
                     already_downloaded.append(t.guid)
                 else:
                     print datetime.datetime.now(), t.guid, "was already added to download list. Skipping."
-                    
+
 
         else:
             print u"Loniak is not supporting", source['type'], u'yet. '\

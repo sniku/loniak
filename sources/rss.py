@@ -6,7 +6,12 @@ try:
     import feedparser
 except ImportError:
     from libs import feedparser
-from dateutil import parser
+
+try:
+    from dateutil import parser
+except ImportError:
+    from libs.dateutil import parser
+
 
 class RssSource(SourceBase):
 
