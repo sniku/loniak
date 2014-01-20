@@ -4,6 +4,7 @@ import os
 
 DEFAULT_SETTINGS = {
     'CONFIG_FILE_PATH': '/etc/loniak/loniak.conf',
+    'DATA_FILE': '/etc/loniak/data.json',
     'MAIN_LOG': '/var/log/loniak.log',
     'CLIENT': 'Transmission',
     'DEBUG': True,
@@ -17,7 +18,7 @@ DEFAULT_SETTINGS = {
 class RepeatedDict(dict):
 
     def __init__(self, *args, **kwargs):
-        self.repeated_keys = ['match']
+        self.repeated_keys = ['match', 'exclude']
         super(RepeatedDict, self).__init__(*args, **kwargs)
 
     def __setitem__(self, key, value):
@@ -70,8 +71,12 @@ class Settings(object):
         for section_name in config.sections():
             if not section_name.startswith('source'):
                 continue
+            source = dict([(x, config.get(section_name, x)) for x in config.options(section_name)])
+            if 'match' not in source: source['match'] = []
+            if 'exclude' not in source: source['exclude'] = []
+            source['source_name'] = section_name
 
-            sources.append(dict([(x, config.get(section_name, x)) for x in config.options(section_name)])) # {'type': config.get(section_name, 'type'), 'url': config.get(section_name, 'url')}
+            sources.append(source) # {'type': config.get(section_name, 'type'), 'url': config.get(section_name, 'url')}
 
         self.sources = sources
 

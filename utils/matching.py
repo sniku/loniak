@@ -1,8 +1,15 @@
 import datetime
 
-def substring_match(match):
+def substring_match(match, exclude):
 
     def real_match(torrent):
+        for e in exclude:
+            if e in torrent.title or e in torrent.description:
+                return False
+            for location in torrent.torrent_locations:
+                if e in location:
+                    return False
+
         for m in match:
             if m in torrent.title or m in torrent.description:
                 torrent.matched = m
@@ -11,9 +18,10 @@ def substring_match(match):
                 if m in location:
                     torrent.matched = m
                     return True
-
-        return False
-
+        if match: # if any match were specified, we are excluding not matched ones.
+            return False
+        else:    # if no match were specified, we are including all
+            return True
 
     return real_match
 

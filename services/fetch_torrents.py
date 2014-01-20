@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import datetime
 
 from sources import get_module
@@ -19,14 +20,14 @@ def fetch_torrents():
     already_downloaded = data['already_downloaded']
 
     for source in settings.sources:
+        print('\n{0} fetching {1} {2}'.format(datetime.datetime.now(), source['type'], source['source_name']))
         module = get_module(source['type'])
 
         if module:
             torrents = module.extract_torrent_urls(source['url'])
 
-            # filter the torrents with the strings
-            if 'match' in source and source['match']:
-                torrents = filter(substring_match(source['match']), torrents)
+            # filter the torrents with the "match" and "exclude" clauses
+            torrents = filter(substring_match(source['match'], source['exclude']), torrents)
 
             # filter the torrents with the publication date
             if 'published_days_ago' in source and source['published_days_ago'].isdigit():
@@ -37,12 +38,11 @@ def fetch_torrents():
                     client.consume_torrent(t)
                     already_downloaded.append(t.guid)
                 else:
-                    print datetime.datetime.now(), t.guid, "was already added to download list. Skipping."
+                    print("{0} {1} was already added to download list. Skipping.".format(datetime.datetime.now(), t.guid))
 
 
         else:
-            print u"Loniak is not supporting", source['type'], u'yet. '\
-                  u"Supported source types: HTML, RSS" #, ", ".join(get_available_modules())
+            print(u"Loniak is not supporting yet. Supported source types: HTML, RSS".format(source['type']))
     write_loniak_data_file(settings.DATA_FILE, data)
 
 

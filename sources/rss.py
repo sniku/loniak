@@ -44,9 +44,12 @@ class RssSource(SourceBase):
             if 'magneturi' in entry:
                 torrent_links.append(entry['magneturi'])
 
-            publication_date =  parser.parse(entry['published']).replace(tzinfo=None)
+            publication_date = parser.parse(entry['published']).replace(tzinfo=None)
+            description      = entry['description'] if 'description' in entry else ''
+            guid             = entry['id'] if 'id' in entry else torrent_links[0]
+            title            = entry['title'] if 'id' in entry else ''
 
-            t = Torrent(torrent_links, title=entry['title'], guid=entry['id'], description=entry['description'], publication_date=publication_date)
+            t = Torrent(torrent_links, title=title, guid=guid, description=description, publication_date=publication_date)
             torrents.append(t)
         return torrents
 
