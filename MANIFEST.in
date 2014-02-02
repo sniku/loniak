@@ -1,0 +1,6 @@
+include setup.py
+include loniak/
+recursive-include loniak *
+recursive-include loniak */*
+include loniak.py
+include example_config.conf
