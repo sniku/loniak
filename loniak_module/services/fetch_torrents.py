@@ -3,12 +3,12 @@
 from __future__ import print_function
 import datetime
 
-from loniak.sources import get_module
-from loniak.clients import AVAILABLE_CLIENTS
-from loniak.config import settings
-from loniak.loniak_exceptions import ConfigurationError
-from loniak.utils.json_utils import read_loniak_data_file, write_loniak_data_file
-from loniak.utils.matching import publication_date_match, substring_match
+from loniak_module.sources import get_module
+from loniak_module.clients import AVAILABLE_CLIENTS
+from loniak_module.config import settings
+from loniak_module.loniak_exceptions import ConfigurationError
+from loniak_module.utils.json_utils import read_loniak_data_file, write_loniak_data_file
+from loniak_module.utils.matching import publication_date_match, substring_match
 
 def fetch_torrents():
 

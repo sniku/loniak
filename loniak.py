@@ -8,13 +8,13 @@ Usage:
   loniak finished_downloading <guid>
 
 """
-from loniak.services import notify
-from loniak.services import fetch_torrents
+from loniak_module.services import notify
+from loniak_module.services import fetch_torrents
 
 try:
     from docopt import docopt
 except ImportError:
-    from loniak.libs import docopt
+    from loniak_module.libs import docopt
 
 
 

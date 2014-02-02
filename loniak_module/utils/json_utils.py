@@ -1,6 +1,6 @@
 import os
 import json
-from loniak.loniak_exceptions import ConfigurationError
+from loniak_module.loniak_exceptions import ConfigurationError
 
 """
 These functions are used for reading/writing the loniak.json data file.

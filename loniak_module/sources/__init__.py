@@ -4,8 +4,8 @@
 # You could implement a Source that fetches .torrent files from a folder on your HDD, internet RSS feed, HTML webpage.
 # Currently only RSS type is fully implemented.
 
-from loniak.sources.rss import RssSource
-from loniak.sources.html import HtmlSource
+from loniak_module.sources.rss import RssSource
+from loniak_module.sources.html import HtmlSource
 
 ALL_MODULES = [RssSource()] # TODO: implement other source types
 

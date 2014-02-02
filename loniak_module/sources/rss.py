@@ -1,16 +1,16 @@
 import urllib2
 
-from loniak.sources.base import SourceBase
-from loniak.tr.torrent import Torrent
+from loniak_module.sources.base import SourceBase
+from loniak_module.tr.torrent import Torrent
 try:
     import feedparser
 except ImportError:
-    from loniak.libs import feedparser
+    from loniak_module.libs import feedparser
 
 try:
     from dateutil import parser
 except ImportError:
-    from loniak.libs.dateutil import parser
+    from loniak_module.libs.dateutil import parser
 
 
 class RssSource(SourceBase):

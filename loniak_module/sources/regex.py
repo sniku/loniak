@@ -1,4 +1,4 @@
-from loniak.sources.base import SourceBase
+from loniak_module.sources.base import SourceBase
 
 class RegexSource(SourceBase):
 

@@ -5,7 +5,7 @@ Copyright (c) 2003-2007  Gustavo Niemeyer <gustavo@niemeyer.net>
 This module offers extensions to the standard python 2.3+
 datetime module.
 """
-from loniak.libs.dateutil import relativedelta, tz
+from loniak_module.libs.dateutil import relativedelta, tz
 
 __author__ = "Gustavo Niemeyer <gustavo@niemeyer.net>"
 __license__ = "PSF License"

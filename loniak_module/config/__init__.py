@@ -81,9 +81,10 @@ class Settings(object):
 
             sources.append(source)
 
+        if not sources:
+            print (u"You haven't specified any sources yet. Edit the config file ({0}) and add sources".format(self.CONFIG_FILE_PATH))
+
         self.sources = sources
-
-
 
 
     def check_config_file(self):

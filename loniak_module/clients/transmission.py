@@ -1,8 +1,8 @@
 import subprocess
 import datetime
 
-from loniak.clients.base import ClientBase
-from loniak.config import settings
+from loniak_module.clients.base import ClientBase
+from loniak_module.config import settings
 
 
 class TransmissionClient(ClientBase):
