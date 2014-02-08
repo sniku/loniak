@@ -6,8 +6,9 @@
 
 from loniak_module.sources.rss import RssSource
 from loniak_module.sources.html import HtmlSource
+from loniak_module.sources.imdb import IMDBSource
 
-ALL_MODULES = [RssSource()] # TODO: implement other source types
+ALL_MODULES = [RssSource(), IMDBSource(), HtmlSource()] # TODO: implement other source types
 
 def get_module(name):
     modules = dict([(cls.__unicode__(), cls) for cls in get_available_modules()])
