@@ -4,7 +4,6 @@ loniak
 
 Automatic torrent downloader.
 
-
 ### Installation ###
 
 #### install the dependencies ####
@@ -26,8 +25,7 @@ Assuming that you have git and python-pip
 ### Configuration ###
     
     cat /etc/loniak/loniak.conf
-
-
+    
     [main]
     DEBUG: true
     TRANSMISSION_USERNAME: transmission
@@ -51,6 +49,12 @@ Assuming that you have git and python-pip
     match: Helix
     match: S01E01
 
+    # This is downloading all the movies/TV series that I have on my www.imdb.com watchlist
+    # Whenever you add something to your watchlist, it will be downloaded automatically by loniak
+    [source my_imdb_watchlist]
+    type: IMDB
+    URL: http://rss.imdb.com/user/urXXXXXX/watchlist
+
     # Monitors subsection of eztv.it and downloads all the episodes from there
     [source sherlock]
     type: RSS
@@ -61,3 +65,10 @@ Assuming that you have git and python-pip
     type: RSS
     URL: http://www.finalgear.com/feed/torrents/sd/
     published_days_ago: 1
+    
+    # If the website you want to monitor doesn't have a RSS feed, you can use the HTML type
+    [source topgear]
+    type: HTML
+    URL: https://thepiratebay.se/search/something+that+is+not+yet+released/0/99/0
+    
+    
