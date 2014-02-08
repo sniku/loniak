@@ -1,6 +1,11 @@
 import urllib2
 from loniak_module.sources.base import SourceBase
-from BeautifulSoup import BeautifulSoup
+
+try:
+    from BeautifulSoup import BeautifulSoup
+except ImportError:
+    from loniak_module.libs.BeautifulSoup import BeautifulSoup
+
 import re
 from loniak_module.tr.torrent import Torrent
 
