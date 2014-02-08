@@ -14,7 +14,7 @@ from loniak_module.services import fetch_torrents
 try:
     from docopt import docopt
 except ImportError:
-    from loniak_module.libs import docopt
+    from loniak_module.libs.docopt import docopt
 
 
 
