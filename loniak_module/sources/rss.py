@@ -37,9 +37,17 @@ class RssSource(SourceBase):
         torrents = []
         for entry in root['entries']:
 
-            torrent_links = [x['href'] for x in entry['links'] if 'type' in x and x['type'] == 'application/x-bittorrent']
+            torrent_links = set()
+            for x in entry['links']:
+                if 'type' in x and 'href' in x and x['type'] == 'application/x-bittorrent':
+                    torrent_links.add(x['href'])
+                elif 'href' in x and x['href'].endswith('.torrent'):
+                    torrent_links.add(x['href'])
+            if 'link' in entry:
+                torrent_links.add(entry['link'])
+
             if 'magneturi' in entry:
-                torrent_links.append(entry['magneturi'])
+                torrent_links.add(entry['magneturi'])
 
             try:
                 publication_date = parser.parse(entry['published']).replace(tzinfo=None)
@@ -52,13 +60,7 @@ class RssSource(SourceBase):
 
             t = Torrent(torrent_links, title=title, guid=guid, description=description, publication_date=publication_date)
             torrents.append(t)
+
         return torrents
-
-
-
-
-
-
-
 
 
